@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import graph.AdjList.LinkedNode;
+import graph.Graph.LinkedNode;
 
 /*
- * 最小生成树
+ * 最小生成树（邻接表表示）
  */
 public class Prim {
 	
@@ -15,7 +15,7 @@ public class Prim {
 	public static List<Node> result = new ArrayList<>();
 	public static List<Node> Q;
 	// Prim's algorithms
-	public static void prim(AdjList graph, char start){
+	public static void prim(Graph graph, char start){
 		//初始化
 		Q = new LinkedList<>();
 		for(int i=0; i<graph.vers_num; i++){
@@ -28,7 +28,7 @@ public class Prim {
 		//生成MST
 		while( !Q.isEmpty()){
 			char u = extractMin(Q);
-			for( AdjList.LinkedNode node : graph.adj(u) ){
+			for( Graph.LinkedNode node : graph.adj(u) ){
 				Node v = contains(Q,node);
 				if( v != null && v.key > node.weight){
 					v.key = node.weight;
@@ -85,7 +85,7 @@ public class Prim {
 	public static void main(String[] args) {
 		int[][] matrix = {{0,2,INF,INF,1},{2,0,2,1,9},{INF,2,0,10,INF},{INF,1,10,0,7},{1,9,INF,7,0}};
 //		int[][] matrix = {};
-		AdjList g = new AdjList(matrix);
+		Graph g = new Graph(matrix);
 		Prim.prim(g, 'E');
 		Prim.printMST();
 	}

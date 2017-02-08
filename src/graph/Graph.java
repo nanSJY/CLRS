@@ -3,7 +3,10 @@ package graph;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdjList {
+/*
+ * 图的邻接表表示
+ */
+public class Graph {
 	
 	public static int INF = Integer.MAX_VALUE;
 	
@@ -22,6 +25,7 @@ public class AdjList {
 		char data;
 		int weight;
 		LinkedNode nextEdge;
+		public LinkedNode(){}
 		public LinkedNode(char data, int weight, LinkedNode nextEdge) {
 			this.data = data;
 			this.weight = weight;
@@ -33,9 +37,9 @@ public class AdjList {
 	ArrayNode[] vers;
 	int vers_num;
 	
-	// 邻接矩阵 创建 邻接表
-	public AdjList(int[][] matrix){
-	vers_num = matrix.length;
+	// 由邻接矩阵 创建 邻接表
+	public Graph(int[][] matrix){
+		vers_num = matrix.length;
 		vers = new ArrayNode[vers_num];
 		
 		for(int i=0;i<vers_num;i++){
@@ -106,7 +110,7 @@ public class AdjList {
 
 //		int[][] matrix = {{0,1,INF,INF,1},{1,0,1,1,1},{INF,1,0,1,INF},{INF,1,1,0,1},{1,1,INF,1,0}};
 		int[][] matrix = {{0,2,INF,INF,1},{2,0,2,1,9},{INF,2,0,10,INF},{INF,1,10,0,7},{1,9,INF,7,0}};
-		AdjList g = new AdjList(matrix);
+		Graph g = new Graph(matrix);
 		g.printAdjList();
 		
 		for(LinkedNode n: g.adj('E')){
