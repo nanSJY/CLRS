@@ -58,7 +58,7 @@ public class HeapSort {
 	}
 	
 	public static void main(String[] args) {
-		int[] array = {16,7,3,20,17,8};
+		int[] array = {16,14,10,8,7,9,3,2,4,1};
 		HeapSort h = new HeapSort(array);
 		h.sort();
 	}
